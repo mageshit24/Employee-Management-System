@@ -23,17 +23,16 @@ Displays all employee records with options to **Add, Update** and **Remove**.
 ### ➕ Add Employee
 Form for adding a new employee with validation.
 
-
 <img width="1919" height="1018" alt="image" src="https://github.com/user-attachments/assets/0248936f-c432-4124-a86c-094639be086c" />
 
 ## 🛠️ Tech Stack
 
 | Component | Technology Used |
 |------------|-----------------|
-| **Frontend** | React.js, Bootstrap |
-| **Backend** | Node.js, Express.js |
+| **Frontend** | React.js, Vite.js, Bootstrap |
+| **Backend** | Java, Spring Boot |
 | **Database** | MySQL |
-| **Runtime** | Node 18+ |
+| **Runtime** | JVM (Spring Boot), Node 18+ (Vite/React dev) |
 | **Version Control** | Git & GitHub |
 
 ## ⚙️ Installation and Setup

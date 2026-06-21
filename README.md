@@ -87,11 +87,17 @@ CREATE DATABASE ems;
 ```
 
 ### 3️⃣ Configure the backend
-Edit `backend/src/main/resources/application.properties` with your own local credentials:
+Add `backend/src/main/resources/application.properties` with your own local credentials:
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/ems
-spring.datasource.username=root
-spring.datasource.password=your_local_password
+spring.application.name=backend
+
+spring.datasource.url=your_connection_url
+spring.datasource.username=your_db_user
+spring.datasource.password=your_db_password
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+
 ```
 > ⚠️ Keep real credentials out of version control — see the note below.
 

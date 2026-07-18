@@ -43,6 +43,13 @@
   font-size: 28px;
   font-weight: 600;
   letter-spacing: 0.01em;
+  /* The global "h1, h2, h3 { color: var(--ink) }" rule in index.css is
+     meant for headings on the light page background. Without this
+     override it also applies here, on the masthead's dark background -
+     making the title dark-text-on-dark-background (effectively invisible,
+     while still being a clickable link, which is why hovering that
+     "empty" space showed a hand cursor). */
+  color: var(--paper);
 }
 
 .masthead-title a {

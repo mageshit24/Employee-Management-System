@@ -1,6 +1,7 @@
 package magesh.ems.backend.controller;
 
-import lombok.AllArgsConstructor;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import magesh.ems.backend.dto.EmployeeDto;
 import magesh.ems.backend.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -9,48 +10,80 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
-@AllArgsConstructor
+// Note: no @CrossOrigin("*") here anymore -- allowed origins are now
+// configured centrally in WebConfig, driven by app.cors.allowed-origins,
+// instead of trusting every website's JavaScript by default.
+/**
+ * HTTP entry point for employee CRUD — thin by design: every method just
+ * validates the request shape ({@code @Valid}), delegates to {@link
+ * EmployeeService} for the actual logic, and maps the result to a status code.
+ * Anything that goes wrong past this point (not-found, duplicate email, an
+ * unexpected failure) is caught by {@link
+ * magesh.ems.backend.exception.GlobalExceptionHandler}, not here.
+ *
+ * There is currently no authentication/authorization on these endpoints — every
+ * route below is reachable by anyone who can reach the API and pass the
+ * CORS/origin check. See the README's Security &amp; Hardening section.
+ */
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/employees")
-
 public class EmployeeController {
 
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
-    //Build Add Employee REST API
-
+    /**
+     * {@code POST /api/employees} - create a new employee. 201 + the created
+     * record (with its new id) on success.
+     */
     @PostMapping
-    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> createEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
         EmployeeDto savedEmployee = employeeService.createEmployee(employeeDto);
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
 
-    //Build Get Employee REST API
+    /**
+     * {@code GET /api/employees/{id}} - fetch one employee by id. 404 (via
+     * GlobalExceptionHandler) if it doesn't exist.
+     */
     @GetMapping("{id}")
     public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId) {
         EmployeeDto employeeDto = employeeService.getEmployeeById(employeeId);
-        return new ResponseEntity<>(employeeDto, HttpStatus.OK);
+        return ResponseEntity.ok(employeeDto);
     }
 
-    //Build Get All Employees REST API
+    /**
+     * {@code GET /api/employees[?q=&sortBy=&sortDir=]} - list employees,
+     * optionally filtered by a free-text search and sorted. All three params
+     * are optional; with none supplied this returns the full roster sorted by
+     * first name ascending. Returns an empty array, never null, when nothing
+     * matches.
+     */
     @GetMapping
-    public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
-        List<EmployeeDto> employees = employeeService.getAllEmployee();
-        return new ResponseEntity<>(employees, HttpStatus.OK);
+    public ResponseEntity<List<EmployeeDto>> getAllEmployees(
+            @RequestParam(name = "q", required = false) String query,
+            @RequestParam(name = "sortBy", required = false, defaultValue = "firstname") String sortBy,
+            @RequestParam(name = "sortDir", required = false, defaultValue = "asc") String sortDir) {
+        return ResponseEntity.ok(employeeService.getAllEmployee(query, sortBy, sortDir));
     }
 
-    //Build Update Employee REST API
+    /**
+     * {@code PUT /api/employees/{id}} - replace an existing employee's fields.
+     * 404 if the id doesn't exist.
+     */
     @PutMapping("{id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId, @RequestBody EmployeeDto updatedEmployee) {
-        EmployeeDto employeeDto = employeeService.updateEmployee(employeeId, updatedEmployee);
-        return new ResponseEntity<>(employeeDto, HttpStatus.OK);
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId,
+            @Valid @RequestBody EmployeeDto updatedEmployee) {
+        return ResponseEntity.ok(employeeService.updateEmployee(employeeId, updatedEmployee));
     }
 
-    //Build Delete Employee REST API
+    /**
+     * {@code DELETE /api/employees/{id}} - remove an employee. 204 with no body
+     * on success, 404 if the id doesn't exist.
+     */
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId) {
+    public ResponseEntity<Void> deleteEmployee(@PathVariable("id") Long employeeId) {
         employeeService.deleteEmployee(employeeId);
-        return ResponseEntity.ok("Employee deleted successfully");
+        return ResponseEntity.noContent().build();
     }
 }

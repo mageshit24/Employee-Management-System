@@ -1,23 +1,78 @@
-# Secrets / local env
+# ---------------------------------------------------------------------
+# Employee Management System - one repo-wide .gitignore for both
+# backend/ (Maven/Spring Boot) and frontend/ (Node/Vite).
+# ---------------------------------------------------------------------
+
+# --- Secrets / local env - never commit real credentials ---
+# Bare filenames (no leading slash) match at any depth, so these also
+# cover backend/.env and frontend/.env, not just the repo root.
 .env
 .env.local
 **/application-local.properties
 
-# Spring Boot config
-backend/src/main/resources/application.properties
-
-# Maven
+# --- Backend (Maven / Spring Boot) ---
+backend/HELP.md
 backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+!backend/**/src/main/**/target/
+!backend/**/src/test/**/target/
 
-# Node / frontend
-frontend/node_modules/
-frontend/dist/
+# Spring Tool Suite
+backend/.apt_generated
+backend/.classpath
+backend/.factorypath
+backend/.project
+backend/.settings
+backend/.springBeans
+backend/.sts4-cache
 
-# IDE
+# IntelliJ IDEA leftovers not covered by the general IDE section below
+backend/*.iws
+backend/*.ipr
+
+# NetBeans
+backend/nbproject/private/
+backend/nbbuild/
+backend/dist/
+backend/nbdist/
+backend/.nb-gradle/
+backend/build/
+!backend/**/src/main/**/build/
+!backend/**/src/test/**/build/
+
+# --- Frontend (Node / Vite) ---
+frontend/node_modules
+frontend/dist
+frontend/dist-ssr
+frontend/*.local
+
+# .env is caught by the general rule above; the wildcard variant + the
+# example-file allowlist are Vite-specific, so they stay scoped here.
+frontend/.env.*
+!frontend/.env.example
+
+# npm / yarn / pnpm logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor extras not covered by the general IDE section below
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --- IDE (applies anywhere in the repo) ---
 .idea/
 *.iml
-.vscode/
+.vscode/*
+!.vscode/extensions.json
 
-# OS
+# --- OS (applies anywhere in the repo) ---
 .DS_Store
 Thumbs.db

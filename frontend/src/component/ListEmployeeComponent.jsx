@@ -204,7 +204,7 @@ export const ListEmployeeComponent = () => {
                                 <div className="record-name">{employee.firstname} {employee.lastname}</div>
                                 <div className="record-email">{employee.email}</div>
                             </div>
-                            <span className="record-badge">№ {String(employee.id).padStart(4, '0')}</span>
+                            <span className="record-badge">Emp ID: {String(employee.id).padStart(4, '0')}</span>
                             <div className="record-actions">
                                 <button
                                     className="btn btn-ghost btn-sm btn-icon"

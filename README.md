@@ -19,7 +19,7 @@ A full-stack **Employee Management System (EMS)** built with **React 19, Spring 
 - 🧭 Navigation between employee list and add/edit form
 - 🖥️ Custom "records office" design system (Playfair Display + DM Sans, gold + forest-teal palette; own CSS, no UI framework)
 - 🔗 RESTful API backend with full CRUD + search/sort endpoints
-- 🔐 Hardened by default — see [Security & Hardening](#-security--hardening) below
+- 🔐 Hardened by default - see [Security & Hardening](#-security--hardening) below
 
 ---
 

@@ -15,7 +15,13 @@ export default defineConfig([
     files: ['**/*.{js,jsx}'],
     extends: [
       js.configs.recommended,
-      reactHooks.configs['recommended-latest'],
+      // eslint-plugin-react-hooks 7's top-level configs['recommended-latest']
+      // still ships in the legacy eslintrc "plugins: ['react-hooks']"
+      // (array of strings) shape, which ESLint 10's stricter flat-config
+      // validation now rejects outright. The properly flat-shaped version
+      // (plugins: { 'react-hooks': pluginObject }) lives one level down,
+      // under .flat - see eslint-plugin-react-hooks's own flat-config docs.
+      reactHooks.configs.flat['recommended-latest'],
       reactRefresh.configs.vite,
     ],
     languageOptions: {

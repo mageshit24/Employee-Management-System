@@ -82,9 +82,9 @@ Employee-Management-System/
 | Response headers | None | `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `Content-Security-Policy`, `Cache-Control: no-store` on every API response |
 | Frontend console | Employee data and Axios errors logged raw | `src/utils/logger.js` is a no-op outside dev builds |
 | Production bundle | Default Vite build | Source maps disabled, `console`/`debugger` stripped at build time (see `vite.config.js`) |
-| Backend dev tooling | N/A | `spring-boot-devtools` is an `optional` Maven dependency, excluded from the packaged jar (see `pom.xml`), and self-disables when run from a repackaged jar rather than an exploded classpath — it never reaches a deployed build |
+| Backend dev tooling | N/A | `spring-boot-devtools` is an `optional` Maven dependency, excluded from the packaged jar (see `pom.xml`), and self-disables when run from a repackaged jar rather than an exploded classpath - it never reaches a deployed build |
 | Input validation | None beyond DB constraints | Bean Validation (`@NotBlank`, `@Email`, `@Size`) on the DTO, mirrored in the React form |
-| DevTools | N/A | Optional deterrent guard, single env-var toggle — see below |
+| DevTools | N/A | Optional deterrent guard, single env-var toggle - see below |
 
 **DevTools guard.** `VITE_DISABLE_DEVTOOLS=true` in `frontend/.env` blocks the F12 / Ctrl+Shift+I / right-click shortcuts and shows an overlay while a docked DevTools panel looks open. This is friction for casual users on a public demo, **not real security** - anyone who wants to read the JS bundle or inspect network calls still can. There are no secrets in the frontend to protect; the real "code exposure prevention" is the backend never sending stack traces or SQL to the client (see the table above). Leave the flag `false` for local development.
 

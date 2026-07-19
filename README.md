@@ -1,15 +1,15 @@
 # 🧑‍💼 Employee Management System
 
-A full-stack **Employee Management System (EMS)** built with **React 19, Spring Boot 3, and MySQL**, providing a records-office-styled web interface to create, view, update, and delete employee records through a REST API — with CORS locked down, no stack traces or SQL leaking to the client, and a browser-DevTools deterrent you can toggle per environment.
+A full-stack **Employee Management System (EMS)** built with **React 19, Spring Boot 3, and MySQL**, providing a records-office-styled web interface to create, view, update, and delete employee records through a REST API - with CORS locked down, no stack traces or SQL leaking to the client, and a browser-DevTools deterrent you can toggle per environment.
 
 ---
 
 ## ✨ Features
 
 - 📋 Roster view of all employees as record cards (name, email, ID badge)
-- 🔎 Live search across name and email, and a sort control (name/email A–Z or Z–A, newest/oldest first) — both handled server-side via `GET /api/employees?q=&sortBy=&sortDir=`
+- 🔎 Live search across name and email, and a sort control (name/email A-Z or Z-A, newest/oldest first) — both handled server-side via `GET /api/employees?q=&sortBy=&sortDir=`
 - 📊 Small stats strip (total on file / matching the current search)
-- ➕ Add new employee details, with client- and server-side validation
+- ➕ Add new employee details, with client and server-side validation
 - 🔄 Update existing employee information
 - ❌ Delete employees with a confirm-before-you-remove dialog
 - 🔔 Toast notifications confirming saves, updates, deletes, and copy actions
@@ -193,4 +193,4 @@ Form for adding a new employee.
 
 ## 📄 License
 
-This project is open source — feel free to use, modify, and build on it. Consider adding a `LICENSE` file (e.g. MIT) to make the terms explicit.
+This project is open source - feel free to use, modify, and build on it. Consider adding a `LICENSE` file (e.g. MIT) to make the terms explicit.

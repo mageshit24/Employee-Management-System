@@ -161,23 +161,15 @@ The app will start on **http://localhost:5173** (Vite's default dev port).
 
 ## 📸 Screenshots
 
-> ⚠️ The screenshots below are from before this redesign and still show the
-> old Bootstrap UI — they're kept here as a reference for what changed, but
-> don't reflect the current records-office look, search/sort toolbar, or
-> toast notifications. Replace them with fresh ones once you've run the app
-> locally.
-
 ### 📃 Employee List
 Displays all employee records with options to **Add, Update**, and **Remove**.
 
-<img width="1919" height="1021" alt="Employee List view (pre-redesign)" src="https://github.com/user-attachments/assets/d27f6ebb-4342-46e7-80bd-8c641bd5e89b" />
-
-<img width="1919" height="1022" alt="Employee List view with actions (pre-redesign)" src="https://github.com/user-attachments/assets/934b3725-365c-41bb-a507-283eba5ab35b" />
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/0dbd7e32-dd3f-4dbe-80b3-7742f0427503" />
 
 ### ➕ Add Employee
 Form for adding a new employee.
 
-<img width="1919" height="1018" alt="Add Employee form (pre-redesign)" src="https://github.com/user-attachments/assets/0248936f-c432-4124-a86c-094639be086c" />
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/d906a734-0115-4e25-aef7-89fdd672180b" />
 
 ---
 

@@ -7,7 +7,7 @@ A full-stack **Employee Management System (EMS)** built with **React 19, Spring 
 ## ✨ Features
 
 - 📋 Roster view of all employees as record cards (name, email, ID badge)
-- 🔎 Live search across name and email, and a sort control (name/email A-Z or Z-A, newest/oldest first) — both handled server-side via `GET /api/employees?q=&sortBy=&sortDir=`
+- 🔎 Live search across name and email, and a sort control (name/email A-Z or Z-A, newest/oldest first) - both handled server-side via `GET /api/employees?q=&sortBy=&sortDir=`
 - 📊 Small stats strip (total on file / matching the current search)
 - ➕ Add new employee details, with client and server-side validation
 - 🔄 Update existing employee information
@@ -86,7 +86,7 @@ Employee-Management-System/
 | Input validation | None beyond DB constraints | Bean Validation (`@NotBlank`, `@Email`, `@Size`) on the DTO, mirrored in the React form |
 | DevTools | N/A | Optional deterrent guard, single env-var toggle — see below |
 
-**DevTools guard.** `VITE_DISABLE_DEVTOOLS=true` in `frontend/.env` blocks the F12 / Ctrl+Shift+I / right-click shortcuts and shows an overlay while a docked DevTools panel looks open. This is friction for casual users on a public demo, **not real security** — anyone who wants to read the JS bundle or inspect network calls still can. There are no secrets in the frontend to protect; the real "code exposure prevention" is the backend never sending stack traces or SQL to the client (see the table above). Leave the flag `false` for local development.
+**DevTools guard.** `VITE_DISABLE_DEVTOOLS=true` in `frontend/.env` blocks the F12 / Ctrl+Shift+I / right-click shortcuts and shows an overlay while a docked DevTools panel looks open. This is friction for casual users on a public demo, **not real security** - anyone who wants to read the JS bundle or inspect network calls still can. There are no secrets in the frontend to protect; the real "code exposure prevention" is the backend never sending stack traces or SQL to the client (see the table above). Leave the flag `false` for local development.
 
 ---
 
@@ -128,7 +128,7 @@ export DB_URL=jdbc:mysql://localhost:3306/ems
 export DB_USERNAME=your_db_user
 export DB_PASSWORD=your_db_password
 ```
-Without these set, the app falls back to `jdbc:mysql://localhost:3306/ems` / `root` / empty password for local convenience — fine for a laptop, not for anything shared. See `backend/src/main/resources/application.properties` for the full list of tunables (connection pool size, CORS origins, etc.).
+Without these set, the app falls back to `jdbc:mysql://localhost:3306/ems` / `root` / empty password for local convenience - fine for a laptop, not for anything shared. See `backend/src/main/resources/application.properties` for the full list of tunables (connection pool size, CORS origins, etc.).
 
 ### 4️⃣ Run the backend (Spring Boot, Maven)
 ```bash

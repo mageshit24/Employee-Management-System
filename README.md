@@ -76,7 +76,7 @@ Employee-Management-System/
 
 | Area | Before | Now |
 |---|---|---|
-| CORS | `@CrossOrigin("*")` — any site could call the API | Explicit allow-list via `app.cors.allowed-origins`, configured in `WebConfig` |
+| CORS | `@CrossOrigin("*")` - any site could call the API | Explicit allow-list via `app.cors.allowed-origins`, configured in `WebConfig` |
 | Error responses | Raw exception messages / stack traces reachable | `GlobalExceptionHandler` + `server.error.*` properties return only safe, generic JSON |
 | DB credentials | Hardcoded in `application.properties` | Read from `DB_URL` / `DB_USERNAME` / `DB_PASSWORD` env vars, with local-only fallbacks |
 | Response headers | None | `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `Content-Security-Policy`, `Cache-Control: no-store` on every API response |
@@ -143,7 +143,7 @@ The API will start on **http://localhost:8080**.
 > layer on `application-dev.properties`: formatted SQL logging, DEBUG-level
 > app/HTTP logs, and full validation error detail in responses. It also
 > pulls in [Spring Boot DevTools](https://docs.spring.io/spring-boot/reference/using/devtools.html)
-> (already on the classpath as a dev-only dependency — see `pom.xml`), which
+> (already on the classpath as a dev-only dependency - see `pom.xml`), which
 > auto-restarts the app when you rebuild a class and enables LiveReload.
 > None of this is active by default, and none of it ships in the packaged
 > jar.
@@ -175,7 +175,7 @@ Form for adding a new employee.
 
 ## 🎯 Future Enhancements
 
-- 🔒 User authentication for admin panel (currently the API has no auth layer at all — see the [Security & Hardening](#-security--hardening) note, which is defence-in-depth, not access control)
+- 🔒 User authentication for admin panel (currently the API has no auth layer at all - see the [Security & Hardening](#-security--hardening) note, which is defence-in-depth, not access control)
 - 🧠 Role-based access control
 - 📊 Analytics dashboard for employee insights
 - ☁️ Cloud deployment (e.g., Render / Vercel), with `CORS_ALLOWED_ORIGINS` pinned to the real frontend URL

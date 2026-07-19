@@ -106,7 +106,7 @@ Employee-Management-System/
 
 ### Prerequisites
 - Java 25 and Maven (the bundled `./mvnw` wrapper works too)
-- Node.js 20.19+ or 22.12+ (Vite 8's minimum — anything modern like Node 22/24 LTS is fine)
+- Node.js 20.19+ or 22.12+ (Vite 8's minimum - anything modern like Node 22/24 LTS is fine)
 - MySQL Server
 
 ### 1️⃣ Clone the repository
@@ -122,7 +122,7 @@ CREATE DATABASE ems;
 ```
 
 ### 3️⃣ Configure the backend
-Credentials are read from environment variables — nothing to hardcode or accidentally commit. Set them before starting the app:
+Credentials are read from environment variables - nothing to hardcode or accidentally commit. Set them before starting the app:
 ```bash
 export DB_URL=jdbc:mysql://localhost:3306/ems
 export DB_USERNAME=your_db_user
